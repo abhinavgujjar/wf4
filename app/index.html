@@ -9,8 +9,29 @@
 	<h1>{{city}}, {{country}}</h1>
 
 	<h1>
-		<span ng-bind-template="{{city}}, {{country}}"></span>
+		<span ng-bind="city"></span>
 	</h1>
+
+	<div>
+		<input ng-model="city" type="text"/>
+	</div>
+
+	<div ng-non-bindable>
+		<textarea ng-model="city"></textarea>
+		<h2>This is how you bind to a property - {{city}}</h2>
+	</div>
+
+	<div>
+		<input ng-model="city" type="text"/>
+	</div>
+
+	<div>
+		<input ng-model="city" type="text"/>
+	</div>
+
+	<div>
+		<input ng-model="city" type="text"/>
+	</div>
 
 	<script type="text/javascript" src="app.js"></script>
 </body>
