@@ -4,6 +4,10 @@ var app = angular.module('wfis', []); //empty braces denote no dependencies on o
 
 //defined the controller
 function mainController($scope) {
+
+	$scope.doSomething = function(){
+		alert('Did someting. now what ??');
+	}
 	
 	$scope.name = 'World';
 
@@ -13,6 +17,8 @@ function mainController($scope) {
 	$scope.location = {
 		city : 'Bangalore'
 	}
+
+	$scope.isChecked = false;
 
 	$scope.features = {
 		lakes: true,
@@ -25,45 +31,49 @@ function mainController($scope) {
 		name: 'Wonderla Amusement Park',
 		type: 'Amusement Park',
 		address: 'Mysore Road',
-		img: 'http://i.imgur.com/266xOmg.jpg'
+		img: '266xOmg.jpg'
 	}, {
 		name: 'Bannerghatta National Park',
 		type: 'Nature',
 		address: 'Bannerghatta Road',
-		img: 'http://i.imgur.com/M892iXO.jpg'
+		img: 'M892iXO.jpg'
 	}, {
 		name: 'Shivasamudram Falls',
 		type: 'Nature',
 		address: 'Mandya District',
-		img: 'http://i.imgur.com/u5G8uRY.jpg'
+		img: 'u5G8uRY.jpg'
 
 	}, {
 		name: 'Forum Mall',
 		type: 'Malls',
 		address: 'Koramangala',
-		img: 'http://i.imgur.com/gbqjcTS.jpg'
+		img: 'gbqjcTS.jpg'
 	}]
 
 	$scope.hotels = [{
 		name: 'Clarks Exotica Resort & Spa',
 		reviewsCount: 405,
 		rating: 4,
-		ranking: 37
+		ranking: 37,
+		price: 5000
 	}, {
 		name: 'Golden Palms Hotel & Spa',
 		reviewsCount: 405,
 		rating: 4,
-		ranking: 37
+		ranking: 37,
+		price: 15000
 	}, {
 		name: 'The Elanza Hotel',
 		reviewsCount: 405,
 		rating: 4,
-		ranking: 37
+		ranking: 37,
+		price: 5000
 	}, {
 		name: 'Confident Amoon Glamour Resort +Spa',
 		reviewsCount: 405,
 		rating: 4,
-		ranking: 37
+		ranking: 37,
+		price: 5000
 	}]
 
 

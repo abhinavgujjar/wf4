@@ -4,54 +4,30 @@
 	<title>Angular Training</title>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 </head>
-<body ng-controller="mainController">
 
+<body ng-controller="mainController">
+<style type="text/css">
+	.highlight {
+		color: red;
+	}
+</style>
 	<h1>{{location.city}}, {{country}}</h1>
 
-	<div>
-		<h2>
-			two way using ng-model -
-			<input type="text" ng-model="city"/>
-		</h2>
+	
+	Bangalore has
+	
+	<hr/>
+	<h2>Attractions</h2>
+	<div ng-repeat="item in attractions">
+		<img ng-src="http://i.imgur.com/{{item.img}}" width="100px">
+		<div>{{item.name}}</div>
 	</div>
 
 	<div>
-		<h2>
-			one way using ng-view -
-			<input type="text" ng-value="city"/>
-		</h2>
+		<button ng-click="doSomething()">Click me to do something</button>
 	</div>
 
-	<div>
-		<input type="text" ng-model="sometext" />
-	</div>
-	<div>	
-		<input type="checkbox" ng-model="removeAttractions" /> remove attractions 
-	</div>
-	<div>
-		removeAttractions : {{removeAttractions}}
-	</div>
-
-	<div>	
-		<input type="checkbox" ng-model="hideAttractions" /> hide attractions 
-	</div>
-	<div>
-		hideAttractions : {{hideAttractions}}
-	</div>
-
-	<div ng-if="!removeAttractions" ng-hide="hideAttractions" >
-		<h3>Attractions</h3>
-		<div ng-repeat="item in attractions">
-			<h4>{{item.name}}</h4>
-		</div>
-
-		<hr/>
-		<select ng-model="selectedAttraction" ng-options="item.name group by item.type for item in attractions"></select>
-		<div>
-			<h4>{{selectedAttraction}}</h4>
-		</div>
-	</div>
-
+	
 	<script type="text/javascript" src="app.js"></script>
 
 </body>
