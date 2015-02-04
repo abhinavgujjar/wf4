@@ -4,14 +4,22 @@
 	<title>Angular Training</title>
 	<script type="text/javascript" src="angular.js"></script>
 </head>
-<body ng-controller="mainController">
-	<div >
+<body >
+	<div ng-controller="mainController">
 		<span >
-			<h1>Hello {{companyName}} located at {{lct}}, {{['Good', 'OK', 'Terrible'][1]}} {{timeOfDay}}</h1>
+			<h1>
+				Hello {{companyName}} located at {{lct}}, {{['Good', 'OK', 'Terrible'][1]}} {{timeOfDay}}
+			</h1>
 			<h2>{{companyName}}</h2>
-			<input value="{{companyName}}" />
-			<textarea>{{companyName}}</textarea>
 		</span>
+
+	</div>
+	<div ng-controller="secondController" style="color:red">
+		<h2>{{companyName}}, {{$parent.companyName}}</h2>
+	</div>
+
+	<div style="color:blue">
+		<h2>{{companyName}}</h2>
 	</div>
 	<script type="text/javascript">
 
@@ -53,6 +61,10 @@
 
 		//register the controller
 		app.controller('mainController', mainController);
+
+		app.controller('secondController', function($scope){
+			$scope.companyName = 'WFIS';
+		})
 
 	</script>
 </body>
