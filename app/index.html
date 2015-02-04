@@ -20,6 +20,20 @@
 		{{item.name}}
 	</div>
 
+	<select ng-model="selectedAttraction">
+		<option ng-repeat="att in attractions" ng-value="att.name">{{att.name}}</option>
+	</select>
+
+	<input type="text" ng-model="worldcup.month" />
+	<div>
+		<h2>{{worldcup}}</h2>
+	</div>
+
+	<div>
+		{{selectedAttraction}}
+	</div>
+
+
 
 
 	<script type="text/javascript" src="app.js"></script>
