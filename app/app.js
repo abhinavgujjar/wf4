@@ -6,7 +6,20 @@ var app = angular.module('wfis', []); //empty braces denote no dependencies on o
 function mainController($scope) {
 
 	$scope.doSomething = function(){
-		alert('Did someting. now what ??');
+		alert('this is the new name : ' + $scope.newAttractionName);
+
+		$scope.attractions.push({
+			name : $scope.newAttractionName
+		});
+	}
+
+	$scope.types = ['Amusement Park', 'Nature', 'Malls'];
+
+	$scope.editItem = function(item){
+		item.editing = true;
+	}
+	$scope.save = function(item){
+		item.editing = false;
 	}
 	
 	$scope.name = 'World';

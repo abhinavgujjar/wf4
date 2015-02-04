@@ -6,28 +6,50 @@
 </head>
 
 <body ng-controller="mainController">
-<style type="text/css">
+	<style type="text/css">
 	.highlight {
 		color: red;
 	}
 </style>
 	<h1>{{location.city}}, {{country}}</h1>
-
-	
 	Bangalore has
-	
-	<hr/>
-	<h2>Attractions</h2>
-	<div ng-repeat="item in attractions">
-		<img ng-src="http://i.imgur.com/{{item.img}}" width="100px">
-		<div>{{item.name}}</div>
+	<div>
+		<input type="text" ng-model="newAttractionName" />
 	</div>
-
+	<div>{{newAttractionName}}</div>
 	<div>
 		<button ng-click="doSomething()">Click me to do something</button>
 	</div>
 
-	
+	<hr/>
+	<h2>Attractions</h2>
+	<div ng-repeat="item in attractions">
+		<img ng-src="http://i.imgur.com/{{item.img}}" width="100px">
+		<div ng-hide="item.editing">
+			<div >{{item.name}}</div>
+			<div>{{item.type}}</div>
+			<div >
+				<button ng-click="editItem(item)">edit</button>
+			</div>
+		</div>
+		<div ng-show="item.editing">
+			<div >
+				<input type="text" ng-model="item.name"/>
+			</div>
+			<div>
+				<span ng-repeat="type in types">
+					<input type="radio" ng-model="item.type" ng-value="type" /> {{type}}
+				</span>
+			</div>
+			<div ng-show="item.editing">
+				<button ng-click="save(item)">save</button>
+			</div>
+
+		</div>
+		<hr/>
+		
+	</div>
+
 	<script type="text/javascript" src="app.js"></script>
 
 </body>
