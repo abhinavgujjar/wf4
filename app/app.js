@@ -10,6 +10,10 @@ function mainController($scope) {
 	$scope.city = "Bangalore";
 	$scope.country = "India";
 
+	$scope.location = {
+		city : 'Bangalore'
+	}
+
 	$scope.features = {
 		lakes: true,
 		ocean: false
