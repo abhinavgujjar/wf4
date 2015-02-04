@@ -1,18 +1,59 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="wfis">
 <head>
 	<title>Angular Training</title>
 	<script type="text/javascript" src="angular.js"></script>
 </head>
-<body ng-app>
-
+<body ng-controller="mainController">
 	<div >
 		<span >
-			{{'Hello' + 'World!'}} But this is not angular! This is html hello world
+			<h1>Hello {{companyName}} located at {{lct}}, {{['Good', 'OK', 'Terrible'][1]}} {{timeOfDay}}</h1>
+			<h2>{{companyName}}</h2>
+			<input value="{{companyName}}" />
+			<textarea>{{companyName}}</textarea>
 		</span>
-		<h1>{{11+5}}</h1>
-		<h1>{{['Good', 'OK', 'Terrible'][1]}} Morning</h1>
-		<h1></h1>
 	</div>
+	<script type="text/javascript">
+
+		//register and declare a module
+		var app = angular.module('wfis', []); //empty braces denote no dependencies on other modules!
+
+		//defined the controller
+		function mainController($scope){
+			$scope.companyName = 'Wells Fargo';
+
+			var timeOfDay = 'Morning';
+			var hours = (new Date()).getHours();
+
+			if ( hours >= 11)
+			{
+				timeOfDay = "Late Morning";
+			}
+
+			if ( hours >= 13)
+			{
+				timeOfDay = "Afternoon";
+			}
+
+			if ( hours >= 17)
+			{
+				timeOfDay = "Evening";
+			}
+
+			if ( hours >= 20)
+			{
+				timeOfDay = "Night";
+			}
+
+			$scope.timeOfDay = timeOfDay;
+
+			$scope.lct = "Bangalore";
+
+		}
+
+		//register the controller
+		app.controller('mainController', mainController);
+
+	</script>
 </body>
 </html>
