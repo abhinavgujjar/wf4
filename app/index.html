@@ -12,12 +12,12 @@
 		color: red;
 	}
 </style>
-	<div>
+	<div ng-controller="greetingController">
 		<h1>{{greeting}}  | {{companyName}}</h1>
 	</div>
 
 	<hr/>
-	<div class="row">
+	<div class="row" ng-controller="addController">
 		<div class="col-md-2">
 			<input type="text" class="form-control" ng-model="newHotel.name" />
 		</div>
@@ -42,6 +42,9 @@
 	</div>
 
 	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="controllers/addController.js"></script>
+	<script type="text/javascript" src="controllers/mainController.js"></script>
+	<script type="text/javascript" src="controllers/greetingController.js"></script>
 
 </body>
 </html>

@@ -12,6 +12,10 @@ npm install bower
 ```bash
 bower install angular
 ```
+
+**ng-inspector** - chrome extension for angular debugging. 
+
+
     
 Bootstrap
 ------------------
