@@ -4,23 +4,14 @@
 	<title>Angular Training</title>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 </head>
-<body >
-	<div ng-controller="mainController">
-		<span >
-			<h1>
-				Hello <input value="{{companyName}}" /> located at {{lct}}, {{['Good', 'OK', 'Terrible'][1]}} {{timeOfDay}}
-			</h1>
-			<h2>{{companyName}}</h2>
-		</span>
+<body ng-controller="mainController">
 
-	</div>
-	<div ng-controller="secondController" style="color:red">
-		<h2>{{companyName}}, {{$parent.companyName}}</h2>
-	</div>
+	<h1>{{city}}, {{country}}</h1>
 
-	<div style="color:blue">
-		<h2>{{companyName}}</h2>
-	</div>
+	<h1>
+		<span ng-bind-template="{{city}}, {{country}}"></span>
+	</h1>
+
 	<script type="text/javascript" src="app.js"></script>
 </body>
 </html>
