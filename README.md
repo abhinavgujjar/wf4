@@ -13,6 +13,14 @@ npm install bower
 bower install angular
 ```
     
+Bootstrap
+------------------
+
+* xs : mobile phones and tablets in potrait
+* sm : tablets in landscape
+* md : Regular screens
+* lg : Large screens
+
 
 
 Questions

@@ -3,51 +3,42 @@
 <head>
 	<title>Angular Training</title>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 
-<body ng-controller="mainController">
+<body ng-controller="mainController" class="container">
 	<style type="text/css">
 	.highlight {
 		color: red;
 	}
 </style>
-	<h1>{{location.city}}, {{country}}</h1>
-	Bangalore has
 	<div>
-		<input type="text" ng-model="newAttractionName" />
-	</div>
-	<div>{{newAttractionName}}</div>
-	<div>
-		<button ng-click="doSomething()">Click me to do something</button>
+		<h1>{{greeting}}  | {{companyName}}</h1>
 	</div>
 
 	<hr/>
-	<h2>Attractions</h2>
-	<div ng-repeat="item in attractions">
-		<img ng-src="http://i.imgur.com/{{item.img}}" width="100px">
-		<div ng-hide="item.editing">
-			<div >{{item.name}}</div>
-			<div>{{item.type}}</div>
-			<div >
-				<button ng-click="editItem(item)">edit</button>
-			</div>
+	<div class="row">
+		<div class="col-md-2">
+			<input type="text" class="form-control" ng-model="newHotel.name" />
 		</div>
-		<div ng-show="item.editing">
-			<div >
-				<input type="text" ng-model="item.name"/>
-			</div>
-			<div>
-				<span ng-repeat="type in types">
-					<input type="radio" ng-model="item.type" ng-value="type" /> {{type}}
-				</span>
-			</div>
-			<div ng-show="item.editing">
-				<button ng-click="save(item)">save</button>
-			</div>
+		<div class="col-md-2">
+			<input type="text" class="form-control"  ng-model="newHotel.price" />
+		</div>
+		<div class="col-md-2">
+			<button class="btn btn-primary" ng-click="addHotel(newHotel)">Add Hotel</button>
+		</div>
 
+	</div>
+	<hr/>
+	<div ng-repeat="hotel in hotels" class="well well-sm row">
+		<img ng-src="{{hotel.img}}" class="col-md-3 col-xs-12" >
+		<div class="col-md-7">
+			<div class="row h3">{{hotel.name}}</div>
+			<div class="row text-muted hidden-xs hidden-sm">{{hotel.description}}</div>
 		</div>
-		<hr/>
-		
+		<div class="col-md-2 h2 text-center">
+			{{hotel.price}}
+		</div>
 	</div>
 
 	<script type="text/javascript" src="app.js"></script>
