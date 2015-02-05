@@ -1,157 +1,172 @@
 	//defined the controller
-function mainController($scope) {
+	function mainController($scope, uiConfig, votingService) {
 
-	$scope.numberItems = 5;
 
-	$scope.up = function(hotel){
-		hotel.rating ++;
+		$scope.expensive = uiConfig.expensive;
+		$scope.textLimit = uiConfig.textLimit;
+
+		$scope.next = function() {
+			$scope.pageNumber++;
+		}
+
+		$scope.prev = function() {
+			$scope.pageNumber--;
+		}
+
+	
+
+		$scope.up = votingService.up; 
+
+		$scope.down = function(hotel) {
+			votingService.down(hotel);
+		}
+
+		$scope.toggleMore = function(hotel) {
+			hotel.more = !hotel.more;
+		}
+
+			$scope.numberItems = uiConfig.numberOfItems;
+		$scope.pageNumber = 1;
+
+
+		$scope.hotels = [{
+			"name": "Golden Palms Hotel & Spa",
+			"img": "http://i.imgur.com/dmlhhkU.jpg",
+			"price": 22000,
+			"description": "The Elanza is a full facility 3 star hotel for the discerning business traveler. It is located in the heart of the city, 0.5 Km from M G Road, 39 Km from Airport, its close proximity to the city’s business and commercial areas make it the perfect choice for your guests' stay. The Elanza has got 43 elegant & fully furnished rooms, with a banquet hall & boardroom, to host functions- be it business or social, could accommodate between 50-60 pepole. Well complimented with a choice of cuisines  coffee shop.",
+			"location": "",
+			"rating": 1
+		}, {
+			"name": "Clarks Exotica Resort & Spa",
+			"img": "http://i.imgur.com/S54M0bj.jpg",
+			"price": 13000,
+			"description": "Clarks Exotica Resort & Spa is nestled amidst 70 acres of lush greenery ; a destination in itself with an experience personalized for your delight.At a mere 5 minutes drive from the Bengaluru International Airport and hemmed by verdant greenery, the Clarks Exotica Resort & Spa echoes the voice of Bangalore. In a city that gives into your every demand, here, the vast canvas of space accommodates the break you have been waiting for.",
+			"location": "",
+			"rating": 6
+		}, {
+			"name": "Royal Orchid Resort & Convention Centre",
+			"img": "http://i.imgur.com/hZg00lq.jpg",
+			"price": 2813,
+			"description": "Royal Orchid Resort, Bangalore is spread over 8 acres of greens. It houses 42 Deluxe rooms, 8 Superior rooms and 4 Exclusive Cottages with all modern comforts and amenities.It is very popular for its Indian restaurant – the 9th Mile Dhaba. It is also a much preferred venue for business conferences, weddings, parties and social get-togethers.Royal Orchid resort offers a Convention Center of 5500 sq ft which can accommodate upto 1200 guests and the Green Lawn Space can cater upto a crowd of 2500 guests.",
+			"location": "Allasandra Bellary Rd | Yelahanka, near Jakkur Flying Club, Bangalore 560 065, India",
+			"rating": 6
+		}, {
+			"name": "Confident Amoon Glamour Resort +Spa",
+			"img": "http://i.imgur.com/1jD7lgN.jpg",
+			"price": 5000,
+			"description": "Egypt in Bangalore-",
+			"location": " NH- 04- After Hoskote | Kolar Main Road, Bangalore, India",
+			"rating": 6
+		}, {
+			"name": "Moevenpick Hotel & Spa Bangalore",
+			"img": "http://i.imgur.com/U0KoJxh.jpg",
+			"price": 9500,
+			"description": "",
+			"location": "115, Gokula Extension, HMT Road (near BEL Circle), Bangalore 560054, India",
+			"rating": 3
+		}, {
+			"name": "Escape Hotel & Spa",
+			"img": "http://i.imgur.com/amBtxWl.jpg",
+			"price": 5000,
+			"description": "",
+			"location": "770, 12th Main, 100 Feet Road | HAL 2nd Stage, Indiranagar, Bangalore 560 038, India",
+			"rating": 6
+		}, {
+			"name": "Adarsh Hamilton",
+			"img": "http://i.imgur.com/QhVORNH.jpg",
+			"price": 4200,
+			"description": "Adarsh Hamilton is a finest Business cum Leisure corporate hotel of Bangalore near Richmond Circle. The Hotel is in close proximity to all shopping, cultural centers. It is about 40 km from International Airport and 4 km. from City Railway Station. The Hotel has 82 Executive Rooms which are tastefully decorated with most modern amenities including Wi-Fi internet connectivity, hair dryer, tea and coffee maker, luxury toiletries, In room Safe deposit locker, Mini Bar etc.",
+			"location": "#2 / 4, Langford Garden Road | Richmond Town, Bangalore 560025, India",
+			"rating": 6
+		}, {
+			"name": "Iris - The Business Hotel and Spa",
+			"img": "http://i.imgur.com/QhVORNH.jpg",
+			"price": 6300,
+			"description": "The main strength of the hotel are the very friendly and responsive staff who make you feel welcome and help make your stay in Bangalore enjoyable. Sandeep, in particular, was very helpful and helped arrange transport for me to a hill station in a neighbouring state. He even reimbursed me when he found out extra charges I had been made to pay by mistake. The hotel is also conveniently located near shopping malls and along a street where Christmas and New Year celebrations draw crowds. The rooms are decent--tastefully decorated and very clean. The restaurant offers a great spread for the breakfast buffet and attentive wait staff. I had a wonderful scalp and facial massage by Bhumika at the Spa, though I also received phone calls almost every day asking if I'd like a massage. ",
+			"location": "#70, Brigade Road | Next to Eva Mall, Bangalore 560025, India",
+			"rating": 6
+		}, {
+			"name": "St Mark's Hotel",
+			"img": "http://i.imgur.com/BIBuk43.jpg",
+			"price": 6100,
+			"description": "St. Mark’s Hotel is a value for money 4 Star Business hotel located in the heart of Bangalore, the garden city of India. Situated 38 kms from the airport and a stone’s throw away from the city center, the hotel has 96 smart and comfortable rooms with excellent amenities including Complimentary Buffet Breakfast & Unlimited Internet Connectivity (Wired & Wi-Fi).",
+			"location": "4 / 1, St Marks Road, Bangalore 560001, India",
+			"rating": 6
+		}, {
+			"name": "Springs Hotel & Spa",
+			"img": "http://i.imgur.com/QezaFg8.jpg",
+			"price": 2750,
+			"description": "Springs Hotel & Spa, a 4 star hotel is your residence whilst in Bangalore, with 36 rooms in 4 categories. With 24 hours front desk, daily housekeeping, free Wi Fi, Tea/coffee maker, LCD TV, modern amenities. Comfortable, Convenient and well appointed, right in the Central Business District area of Bangalore. We provide service to each individual to suit their comfort levels; we cannot put names or classifications to this - you would surely have to EXPERIENCE it yourself. With a trendy Roof Top I Bar with interactive counter, Coffee Shop, Banquet hall for up to 200 guests,Board rooms, Business center, MG's multi cuisine restaurant, Swimming pool, Spa and Wellness center. An ideal place for business or leisure and feel the experience of true and traditional South Indian hospitality.",
+			"location": "Hotel   |   #19 H Siddaiah Road | off J.C. Road, Bangalore 560 002, India",
+			"rating": 6
+		}, {
+			"name": "Chairman's Resort",
+			"img": "http://i.imgur.com/mOja8KJ.jpg",
+			"price": 5000,
+			"description": "",
+			"location": "",
+			"rating": 6
+		}, {
+			"name": "The Leela Palace Bangalore",
+			"img": "http://i.imgur.com/7lSnfvh.jpg",
+			"price": 34000,
+			"description": "",
+			"location": "#23, Kodihalli | Old Airport Road, Bangalore 560008, India",
+			"rating": 6
+		}, {
+			"name": "Ramada Encore Bangalore Domlur",
+			"img": "http://i.imgur.com/Fq4cFeQ.jpg",
+			"price": 3600,
+			"description": "Ramada Encore Bangalore Domlur is the new built and first Encore brand hotel in India, on the inner ring Road in close proximity to embassy golf business park Diamond district,Indiranagar,Koramangala and MG road",
+			"location": "Domlur 1st Stage Amarajyothi Layout, Bangalore 560071, India",
+			"rating": 6
+		}, {
+			"name": "Maple Suites, Serviced Residences",
+			"img": "http://i.imgur.com/3P9IDTF.jpg",
+			"price": 3400,
+			"description": "Maple Suites Serviced Apartments offers spacious and modern suites equipped with a fully functional kitchen. Free Wi-Fi access is available in the entire property.Air-conditioned suites feature a living room, dining area and a kitchenette equipped with a minibar, microwave and tea/coffee maker. Ironing facilities, a safe and a flat-screen satellite TV are also included. The en suite bathroom offers a hairdryer(on request), hot shower, bathrobes and free toiletries.Maple Suites Serviced Apartments provides luggage storage, currency exchange, laundry and car rental services. A business centre, library and BBQ facilities are available for guests' use. The tour desk can assist with travel arrangements, while airport transfer is provided at a surcharge.The property is within 3 km from Madiwala Lake and the popular Royal Meenakshi Mall. Gopalan Mall & Shopper's Stop is a 2-minute walk away while Bangalore Railway Station is 12 km away. Bengaluru International Airport is about 40 km from the property.The in-house restaurant, Cafe Red, serves a tasty spread of Indian and Chinese dishes. Room service option is also available. Surrounded by many restaurants we also allow guests to order in.NOTE: WE DO NOT HAVE ANY BRANCHES. ",
+			"location": "142 & 143 Dollar Layout , 4th Main | near Sakhii Hospital, off Bannerghatta Road, Bangalore 560 076, India",
+			"rating": 6
+		}, {
+			"name": "Angsana Oasis Spa & Resort",
+			"img": "http://i.imgur.com/QhNZdjf.jpg",
+			"price": 5000,
+			"description": "",
+			"location": "",
+			"rating": 6
+		}, {
+			"name": "The Pride Hotel",
+			"img": "http://i.imgur.com/o3sfWer.jpg",
+			"price": 2800,
+			"description": "Situated in the heart of the Bangalore city, the Pride is located in close proximity to places of tourist interest like Vidhana Soudha, Cubbon Park and Vishweshwaraya Museum. Rich in every way, The Pride offers exclusive blend of the traditional hospitality with modern comforts.",
+			"location": "93 Richmond Road, Bangalore, Bangalore 560025, India",
+			"rating": 6
+		}, {
+			"name": "Lemon Tree Premier",
+			"img": "http://i.imgur.com/G9qKSJU.jpg",
+			"price": 6500,
+			"description": "",
+			"location": " 2/1, St. Johns Road, Bangalore 560042, India (Ulsoor)",
+			"rating": 6
+		}, {
+			"name": "Hotel Ramanashree",
+			"img": "http://i.imgur.com/FfNahV4.jpg",
+			"price": 25000,
+			"description": "",
+			"location": "16 Raja Ram Hohan Roy Road, Bangalore 560025, India",
+			"rating": 6
+		}, {
+			"name": "Ibis",
+			"img": "http://i.imgur.com/OGLIG3N.jpg",
+			"price": 2999,
+			"description": "Strategically located near business districts and entertainment area, the 185 room ibis Bengaluru Hosur Road is an ideal choice for travellers to the business suburb of the Electronics City,Bannerghatta and the Koramangala Business Districts. With complimentary Wi-Fi access at the Ibis web corner, a restaurant with an interactive cooking concept and Ibis signature 15 minute service guarantee, the hotel is currently the only International Brand hotel in South Bangalore serving economy segment",
+			"location": "26/1 Hosur Road | Near The Oxford College Bomanahalli, Bangalore 560068, India",
+			"rating": 6
+		}]
+
+
+
 	}
-$scope.down = function(hotel){
-		hotel.rating --;
-	}
 
-	$scope.toggleMore = function(hotel){
-		hotel.more = !hotel.more;
-	}
-
-	$scope.hotels = [{
-		"name": "Golden Palms Hotel & Spa",
-		"img": "http://i.imgur.com/dmlhhkU.jpg",
-		"price": 22000,
-		"description": "The Elanza is a full facility 3 star hotel for the discerning business traveler. It is located in the heart of the city, 0.5 Km from M G Road, 39 Km from Airport, its close proximity to the city’s business and commercial areas make it the perfect choice for your guests' stay. The Elanza has got 43 elegant & fully furnished rooms, with a banquet hall & boardroom, to host functions- be it business or social, could accommodate between 50-60 pepole. Well complimented with a choice of cuisines  coffee shop.",
-		"location": "",
-		"rating": 1
-	}, {
-		"name": "Clarks Exotica Resort & Spa",
-		"img": "http://i.imgur.com/S54M0bj.jpg",
-		"price": 13000,
-		"description": "Clarks Exotica Resort & Spa is nestled amidst 70 acres of lush greenery ; a destination in itself with an experience personalized for your delight.At a mere 5 minutes drive from the Bengaluru International Airport and hemmed by verdant greenery, the Clarks Exotica Resort & Spa echoes the voice of Bangalore. In a city that gives into your every demand, here, the vast canvas of space accommodates the break you have been waiting for.",
-		"location": "",
-		"rating": 6
-	}, {
-		"name": "Royal Orchid Resort & Convention Centre",
-		"img": "http://i.imgur.com/hZg00lq.jpg",
-		"price": 2813,
-		"description": "Royal Orchid Resort, Bangalore is spread over 8 acres of greens. It houses 42 Deluxe rooms, 8 Superior rooms and 4 Exclusive Cottages with all modern comforts and amenities.It is very popular for its Indian restaurant – the 9th Mile Dhaba. It is also a much preferred venue for business conferences, weddings, parties and social get-togethers.Royal Orchid resort offers a Convention Center of 5500 sq ft which can accommodate upto 1200 guests and the Green Lawn Space can cater upto a crowd of 2500 guests.",
-		"location": "Allasandra Bellary Rd | Yelahanka, near Jakkur Flying Club, Bangalore 560 065, India",
-		"rating": 6
-	}, {
-		"name": "Confident Amoon Glamour Resort +Spa",
-		"img": "http://i.imgur.com/1jD7lgN.jpg",
-		"price": 5000,
-		"description": "Egypt in Bangalore-",
-		"location": " NH- 04- After Hoskote | Kolar Main Road, Bangalore, India",
-		"rating": 6
-	}, {
-		"name": "Moevenpick Hotel & Spa Bangalore",
-		"img": "http://i.imgur.com/U0KoJxh.jpg",
-		"price": 9500,
-		"description": "",
-		"location": "115, Gokula Extension, HMT Road (near BEL Circle), Bangalore 560054, India",
-		"rating": 3
-	}, {
-		"name": "Escape Hotel & Spa",
-		"img": "http://i.imgur.com/amBtxWl.jpg",
-		"price": 5000,
-		"description": "",
-		"location": "770, 12th Main, 100 Feet Road | HAL 2nd Stage, Indiranagar, Bangalore 560 038, India",
-		"rating": 6
-	}, {
-		"name": "Adarsh Hamilton",
-		"img": "http://i.imgur.com/QhVORNH.jpg",
-		"price": 4200,
-		"description": "Adarsh Hamilton is a finest Business cum Leisure corporate hotel of Bangalore near Richmond Circle. The Hotel is in close proximity to all shopping, cultural centers. It is about 40 km from International Airport and 4 km. from City Railway Station. The Hotel has 82 Executive Rooms which are tastefully decorated with most modern amenities including Wi-Fi internet connectivity, hair dryer, tea and coffee maker, luxury toiletries, In room Safe deposit locker, Mini Bar etc.",
-		"location": "#2 / 4, Langford Garden Road | Richmond Town, Bangalore 560025, India",
-		"rating": 6
-	}, {
-		"name": "Iris - The Business Hotel and Spa",
-		"img": "http://i.imgur.com/QhVORNH.jpg",
-		"price": 6300,
-		"description": "The main strength of the hotel are the very friendly and responsive staff who make you feel welcome and help make your stay in Bangalore enjoyable. Sandeep, in particular, was very helpful and helped arrange transport for me to a hill station in a neighbouring state. He even reimbursed me when he found out extra charges I had been made to pay by mistake. The hotel is also conveniently located near shopping malls and along a street where Christmas and New Year celebrations draw crowds. The rooms are decent--tastefully decorated and very clean. The restaurant offers a great spread for the breakfast buffet and attentive wait staff. I had a wonderful scalp and facial massage by Bhumika at the Spa, though I also received phone calls almost every day asking if I'd like a massage. ",
-		"location": "#70, Brigade Road | Next to Eva Mall, Bangalore 560025, India",
-		"rating": 6
-	}, {
-		"name": "St Mark's Hotel",
-		"img": "http://i.imgur.com/BIBuk43.jpg",
-		"price": 6100,
-		"description": "St. Mark’s Hotel is a value for money 4 Star Business hotel located in the heart of Bangalore, the garden city of India. Situated 38 kms from the airport and a stone’s throw away from the city center, the hotel has 96 smart and comfortable rooms with excellent amenities including Complimentary Buffet Breakfast & Unlimited Internet Connectivity (Wired & Wi-Fi).",
-		"location": "4 / 1, St Marks Road, Bangalore 560001, India",
-		"rating": 6
-	}, {
-		"name": "Springs Hotel & Spa",
-		"img": "http://i.imgur.com/QezaFg8.jpg",
-		"price": 2750,
-		"description": "Springs Hotel & Spa, a 4 star hotel is your residence whilst in Bangalore, with 36 rooms in 4 categories. With 24 hours front desk, daily housekeeping, free Wi Fi, Tea/coffee maker, LCD TV, modern amenities. Comfortable, Convenient and well appointed, right in the Central Business District area of Bangalore. We provide service to each individual to suit their comfort levels; we cannot put names or classifications to this - you would surely have to EXPERIENCE it yourself. With a trendy Roof Top I Bar with interactive counter, Coffee Shop, Banquet hall for up to 200 guests,Board rooms, Business center, MG's multi cuisine restaurant, Swimming pool, Spa and Wellness center. An ideal place for business or leisure and feel the experience of true and traditional South Indian hospitality.",
-		"location": "Hotel   |   #19 H Siddaiah Road | off J.C. Road, Bangalore 560 002, India",
-		"rating": 6
-	}, {
-		"name": "Chairman's Resort",
-		"img": "http://i.imgur.com/mOja8KJ.jpg",
-		"price": 5000,
-		"description": "",
-		"location": "",
-		"rating": 6
-	}, {
-		"name": "The Leela Palace Bangalore",
-		"img": "http://i.imgur.com/7lSnfvh.jpg",
-		"price": 34000,
-		"description": "",
-		"location": "#23, Kodihalli | Old Airport Road, Bangalore 560008, India",
-		"rating": 6
-	}, {
-		"name": "Ramada Encore Bangalore Domlur",
-		"img": "http://i.imgur.com/Fq4cFeQ.jpg",
-		"price": 3600,
-		"description": "Ramada Encore Bangalore Domlur is the new built and first Encore brand hotel in India, on the inner ring Road in close proximity to embassy golf business park Diamond district,Indiranagar,Koramangala and MG road",
-		"location": "Domlur 1st Stage Amarajyothi Layout, Bangalore 560071, India",
-		"rating": 6
-	}, {
-		"name": "Maple Suites, Serviced Residences",
-		"img": "http://i.imgur.com/3P9IDTF.jpg",
-		"price": 3400,
-		"description": "Maple Suites Serviced Apartments offers spacious and modern suites equipped with a fully functional kitchen. Free Wi-Fi access is available in the entire property.Air-conditioned suites feature a living room, dining area and a kitchenette equipped with a minibar, microwave and tea/coffee maker. Ironing facilities, a safe and a flat-screen satellite TV are also included. The en suite bathroom offers a hairdryer(on request), hot shower, bathrobes and free toiletries.Maple Suites Serviced Apartments provides luggage storage, currency exchange, laundry and car rental services. A business centre, library and BBQ facilities are available for guests' use. The tour desk can assist with travel arrangements, while airport transfer is provided at a surcharge.The property is within 3 km from Madiwala Lake and the popular Royal Meenakshi Mall. Gopalan Mall & Shopper's Stop is a 2-minute walk away while Bangalore Railway Station is 12 km away. Bengaluru International Airport is about 40 km from the property.The in-house restaurant, Cafe Red, serves a tasty spread of Indian and Chinese dishes. Room service option is also available. Surrounded by many restaurants we also allow guests to order in.NOTE: WE DO NOT HAVE ANY BRANCHES. ",
-		"location": "142 & 143 Dollar Layout , 4th Main | near Sakhii Hospital, off Bannerghatta Road, Bangalore 560 076, India",
-		"rating": 6
-	}, {
-		"name": "Angsana Oasis Spa & Resort",
-		"img": "http://i.imgur.com/QhNZdjf.jpg",
-		"price": 5000,
-		"description": "",
-		"location": "",
-		"rating": 6
-	}, {
-		"name": "The Pride Hotel",
-		"img": "http://i.imgur.com/o3sfWer.jpg",
-		"price": 2800,
-		"description": "Situated in the heart of the Bangalore city, the Pride is located in close proximity to places of tourist interest like Vidhana Soudha, Cubbon Park and Vishweshwaraya Museum. Rich in every way, The Pride offers exclusive blend of the traditional hospitality with modern comforts.",
-		"location": "93 Richmond Road, Bangalore, Bangalore 560025, India",
-		"rating": 6
-	}, {
-		"name": "Lemon Tree Premier",
-		"img": "http://i.imgur.com/G9qKSJU.jpg",
-		"price": 6500,
-		"description": "",
-		"location": " 2/1, St. Johns Road, Bangalore 560042, India (Ulsoor)",
-		"rating": 6
-	}, {
-		"name": "Hotel Ramanashree",
-		"img": "http://i.imgur.com/FfNahV4.jpg",
-		"price": 25000,
-		"description": "",
-		"location": "16 Raja Ram Hohan Roy Road, Bangalore 560025, India",
-		"rating": 6
-	}, {
-		"name": "Ibis",
-		"img": "http://i.imgur.com/OGLIG3N.jpg",
-		"price": 2999,
-		"description": "Strategically located near business districts and entertainment area, the 185 room ibis Bengaluru Hosur Road is an ideal choice for travellers to the business suburb of the Electronics City,Bannerghatta and the Koramangala Business Districts. With complimentary Wi-Fi access at the Ibis web corner, a restaurant with an interactive cooking concept and Ibis signature 15 minute service guarantee, the hotel is currently the only International Brand hotel in South Bangalore serving economy segment",
-		"location": "26/1 Hosur Road | Near The Oxford College Bomanahalli, Bangalore 560068, India",
-		"rating": 6
-	}]
-
-
-
-}
-
-//register the controller
-app.controller('mainController', mainController);
+	//register the controller
+	app.controller('mainController', mainController);

@@ -3,8 +3,7 @@
 <head>
 	<title>Angular Training</title>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
-	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
-</head>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"></head>
 
 <body ng-controller="mainController" class="container">
 	<style type="text/css">
@@ -38,37 +37,86 @@
 			<input type="text" class="form-control"  ng-model="orderByTerm" placeholder="order by ?" />
 		</div>
 		<div class="col-md-2">
-			<input type="radio" ng-model="numberItems" value="3"> 3
-			<input type="radio" ng-model="numberItems" value="5"> 5
-			<input type="radio" ng-model="numberItems" value="10"> 10
-			<input type="radio" ng-model="numberItems" value="50"> 50
-		</div>
+			<input type="radio" ng-model="numberItems" value="3">
+			3
+			<input type="radio" ng-model="numberItems" value="5">
+			5
+			<input type="radio" ng-model="numberItems" value="10">
+			10
+			<input type="radio" ng-model="numberItems" value="50">50</div>
 
 	</div>
 	<hr/>
-	<div ng-repeat="hotel in hotels | filter : searchTerm | orderBy : orderByTerm | limitTo : numberItems" class="well well-sm row">
+	<div class="row">
+		<nav>
+			<ul class="pagination">
+				<li>
+					<a href="#" ng-click="prev()" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">1</a>
+				</li>
+				<li>
+					<a href="#">2</a>
+				</li>
+				<li>
+					<a href="#">3</a>
+				</li>
+				<li>
+					<a href="#">4</a>
+				</li>
+				<li>
+					<a href="#">5</a>
+				</li>
+				<li>
+					<a href="#" ng-click="next()" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div ng-repeat="hotel in hotels | filter : searchTerm | orderBy : orderByTerm | paginate : numberItems : pageNumber" class="well well-sm row">
 		<div class="col-md-1">
-			<div class="text-center"><button class="btn btn-success " ng-click="up(hotel)"><span class="glyphicon glyphicon-chevron-up"></span></button></div>
-			<div class="text-center"><h2>{{hotel.rating}}</h2></div>
-			<div class="text-center"><button class="btn btn-danger" ng-click="down(hotel)"><span class="glyphicon glyphicon-chevron-down"></span></button></div>
+			<div class="text-center">
+				<button class="btn btn-success " ng-click="up(hotel)">
+					<span class="glyphicon glyphicon-chevron-up"></span>
+				</button>
+			</div>
+			<div class="text-center">
+				<h2>{{hotel.rating}}</h2>
+			</div>
+			<div class="text-center">
+				<button class="btn btn-danger" ng-click="down(hotel)">
+					<span class="glyphicon glyphicon-chevron-down"></span>
+				</button>
+			</div>
 		</div>
 		<img ng-src="{{hotel.img}}" class="col-md-3 col-xs-12" >
 		<div class="col-md-6">
-			<div class="row h3">
+			<div class="row h3" ng-class="{'highlight' : hotel.price >
+				expensive}">
 
 			{{hotel.name | uppercase}}
-			<small><span class="glyphicon glyphicon-star text-success" ng-repeat="item in hotel.rating | numberToArray track by $index"></span></small>
+				<small>
+					<span class="glyphicon glyphicon-star text-success" ng-repeat="item in hotel.rating | numberToArray track by $index"></span>
+				</small>
 			</div>
 			<div class="row text-muted hidden-xs hidden-sm">
-			<span ng-hide="hotel.more">{{hotel.description | limitTo : 200}}</span>
-			<span ng-show="hotel.more">{{hotel.description}}</span>
-			<span ng-show="hotel.description.length > 200 && !hotel.more"><a href="" ng-click="toggleMore(hotel)">...more</a></span>
-			<span ng-show="hotel.more"><a href="" ng-click="toggleMore(hotel)">less</a></span>
+				<span ng-hide="hotel.more">{{hotel.description | limitTo : textLimit | traditionalize}}</span>
+				<span ng-show="hotel.more">{{hotel.description | traditionalize}}</span>
+				<span ng-show="hotel.description.length >
+					textLimit && !hotel.more">
+					<a href="" ng-click="toggleMore(hotel)">...more</a>
+				</span>
+				<span ng-show="hotel.more">
+					<a href="" ng-click="toggleMore(hotel)">less</a>
+				</span>
 			</div>
 		</div>
-		<div class="col-md-2 h2 text-center">
-			{{hotel.price | currency : 'Rs.'}}
-		</div>
+		<div class="col-md-2 h2 text-center">{{hotel.price | currency : 'Rs.'}}</div>
 	</div>
 
 	<script type="text/javascript" src="app.js"></script>
