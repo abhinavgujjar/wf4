@@ -1,5 +1,3 @@
-
-
 app.filter('numberToArray', function() {
 	//return a function that can be applied for each value
 	//input will be the value on which the filter has been applied
@@ -11,8 +9,10 @@ app.filter('numberToArray', function() {
 app.filter('paginate', function() {
 	return function(input, numberOfItems, pageNumber) {
 		//should select the correct page and give back 
-		var output = input.slice((pageNumber - 1) * numberOfItems, (pageNumber * numberOfItems));
-
+		output = input;
+		if (input) {
+			var output = input.slice((pageNumber - 1) * numberOfItems, (pageNumber * numberOfItems));
+		}
 		return output;
 	}
 })

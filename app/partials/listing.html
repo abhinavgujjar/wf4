@@ -51,6 +51,9 @@
 				</ul>
 			</nav>
 		</div>
+		<div ng-show="loading">
+			<h1>Loading...</h1>
+		</div>
 		<div>
 			<div ng-repeat="hotel in hotels | filter : searchTerm | orderBy : orderByTerm | paginate : numberItems : pageNumber" class="well well-sm row">
 				<div class="col-md-1">
