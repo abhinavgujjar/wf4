@@ -37,11 +37,16 @@
 		<div class="col-md-2">
 			<input type="text" class="form-control"  ng-model="orderByTerm" placeholder="order by ?" />
 		</div>
-		
+		<div class="col-md-2">
+			<input type="radio" ng-model="numberItems" value="3"> 3
+			<input type="radio" ng-model="numberItems" value="5"> 5
+			<input type="radio" ng-model="numberItems" value="10"> 10
+			<input type="radio" ng-model="numberItems" value="50"> 50
+		</div>
 
 	</div>
 	<hr/>
-	<div ng-repeat="hotel in hotels | filter : searchTerm | orderBy : orderByTerm" class="well well-sm row">
+	<div ng-repeat="hotel in hotels | filter : searchTerm | orderBy : orderByTerm | limitTo : numberItems" class="well well-sm row">
 		<div class="col-md-1">
 			<div class="text-center"><button class="btn btn-success " ng-click="up(hotel)"><span class="glyphicon glyphicon-chevron-up"></span></button></div>
 			<div class="text-center"><h2>{{hotel.rating}}</h2></div>
