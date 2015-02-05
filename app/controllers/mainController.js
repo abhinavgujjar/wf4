@@ -39,8 +39,13 @@
 
 
 		$scope.loading = true;
-		$http.get('data/hotels').success(function(data){
-			$scope.hotels = data;
+		$http.get('https://api.parse.com/1/classes/hotels',{
+			headers : {
+				'X-Parse-Application-Id' : '4Ed5phWiVdXfuQx9gbtQddrEVKyq9svszfMHFFAS',
+				'X-Parse-REST-API-Key': 'wC5vH6e6WXnt5WpaNfO5w2FZCPnQYWDnQFHqGwtd'
+			}
+		}).success(function(data){
+			$scope.hotels = data.results;
 			$scope.loading = false;
 		});
 
