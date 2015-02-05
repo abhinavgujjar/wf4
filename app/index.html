@@ -13,18 +13,34 @@
 	}
 </style>
 	<div ng-controller="greetingController">
-		<h1>{{greeting}}  | {{companyName}} | {{secondsForWorldCup | number : 0}}</h1>
+		<h1>
+			{{greeting}}  | {{companyName}} | {{secondsForWorldCup | number : 0}}
+		</h1>
 	</div>
 
 	<hr/>
+	<div ng-controller="navController">
+		<ul class="nav nav-pills">
+			<li role="presentation" ng-class="{'active' : activePath === '/home'}" >
+				<a href="#/home">Home</a>
+			</li>
+			<li role="presentation" ng-class="{'active' : activePath === '/listing'}" >
+				<a href="#/listing">Listing</a>
+			</li>
+			<li role="presentation" ng-class="{'active' : activePath === '/new'}" >
+				<a href="#/new">New</a>
+			</li>
+		</ul>
+	</div>
+	<hr/>
 	<ng-view></ng-view>
-	
 
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="controllers/addController.js"></script>
 	<script type="text/javascript" src="controllers/mainController.js"></script>
 	<script type="text/javascript" src="controllers/greetingController.js"></script>
 	<script type="text/javascript" src="controllers/favsController.js"></script>
+	<script type="text/javascript" src="controllers/navController.js"></script>
 	<script type="text/javascript" src="services/timeService.js"></script>
 	<script type="text/javascript" src="services/votingService.js"></script>
 	<script type="text/javascript" src="services/favsService.js"></script>

@@ -6,11 +6,22 @@ app.config(function(votingServiceProvider, $routeProvider){
 	votingServiceProvider.setIncrement(6);
 
 	$routeProvider.when('/home', {
-		templateUrl : 'partials/home.html'
+		templateUrl : 'partials/home.html',
+		controller : function($scope, $location){
+			$scope.goListing = function(){
+				$location.url('/listing')
+			}
+		}
 	});
 
 	$routeProvider.when('/listing', {
 		templateUrl : 'partials/listing.html'
+	});
+
+
+	$routeProvider.when('/new', {
+		templateUrl : 'partials/new.html',
+		controller:  'addController'
 	});
 
 
