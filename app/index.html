@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"></head>
 
-<body ng-controller="mainController" class="container">
+<body  class="container">
 	<style type="text/css">
 	.highlight {
 		color: red;
@@ -17,11 +17,11 @@
 
 	<hr/>
 
-	<div class="row">
+	<div class="row" >
 
-		<div class="col-md-9">
+		<div class="col-md-9" ng-controller="mainController">
 
-			<div class="row" >
+			<div class="row"  >
 				<div class="col-md-4">
 					<input type="text" class="form-control" ng-model="searchTerm" placeholder="Enter search term"/>
 				</div>
@@ -86,6 +86,11 @@
 								<span class="glyphicon glyphicon-chevron-down"></span>
 							</button>
 						</div>
+						<div>
+							<button class="btn btn-default" ng-click="addToFavs(hotel)">
+								<span class="glyphicon glyphicon-star"></span>
+							</button>
+						</div>
 					</div>
 					<img ng-src="{{hotel.img}}" class="col-md-3 col-xs-12" >
 					<div class="col-md-6">
@@ -114,32 +119,48 @@
 			</div>
 
 		</div>
-		<div class="col-md-3" ng-controller="addController">
+		<div class="col-md-3" >
 
-			<div class="panel panel-primary">
-				<div class="panel-heading">Quick Add</div>
-				<div class="panel-body">
-					<form>
-						<div class="form-group">
-							<label >Name</label>
-							<input type="text" class="form-control" placeholder="Enter name"  ng-model="newHotel.name"></div>
-						<div class="form-group">
-							<label >Price</label>
-							<input type="number" class="form-control" placeholder="Enter name"  ng-model="newHotel.price"></div>
-						<button  class="btn btn-default" ng-click="addHotel(newHotel)">Add</button>
-					</form>
+			<div ng-controller="addController">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Quick Add</div>
+					<div class="panel-body">
+						<form>
+							<div class="form-group">
+								<label >Name</label>
+								<input type="text" class="form-control" placeholder="Enter name"  ng-model="newHotel.name"></div>
+							<div class="form-group">
+								<label >Price</label>
+								<input type="number" class="form-control" placeholder="Enter name"  ng-model="newHotel.price"></div>
+							<button  class="btn btn-default" ng-click="addHotel(newHotel)">Add</button>
+						</form>
+					</div>
 				</div>
-			</div>
 
+			</div>
+			<div ng-controller="favsController">
+				<div class="panel panel-warning">
+					<div class="panel-heading">Quick Add</div>
+					<div class="panel-body">
+						<ul>
+							<li ng-repeat="item in favs">{{item.name}}</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
 		</div>
+
 	</div>
 
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="controllers/addController.js"></script>
 	<script type="text/javascript" src="controllers/mainController.js"></script>
 	<script type="text/javascript" src="controllers/greetingController.js"></script>
+	<script type="text/javascript" src="controllers/favsController.js"></script>
 	<script type="text/javascript" src="services/timeService.js"></script>
 	<script type="text/javascript" src="services/votingService.js"></script>
+	<script type="text/javascript" src="services/favsService.js"></script>
 
 </body>
 </html>

@@ -1,6 +1,10 @@
 	//defined the controller
-	function mainController($scope, uiConfig, votingService) {
+	function mainController($scope, uiConfig, votingService, favsService) {
 
+
+		$scope.addToFavs = function(hotel) {
+			favsService.addToFavs(hotel);
+		}
 
 		$scope.expensive = uiConfig.expensive;
 		$scope.textLimit = uiConfig.textLimit;
@@ -13,9 +17,9 @@
 			$scope.pageNumber--;
 		}
 
-	
 
-		$scope.up = votingService.up; 
+
+		$scope.up = votingService.up;
 
 		$scope.down = function(hotel) {
 			votingService.down(hotel);
@@ -25,7 +29,7 @@
 			hotel.more = !hotel.more;
 		}
 
-			$scope.numberItems = uiConfig.numberOfItems;
+		$scope.numberItems = uiConfig.numberOfItems;
 		$scope.pageNumber = 1;
 
 
