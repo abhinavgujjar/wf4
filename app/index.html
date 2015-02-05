@@ -54,7 +54,11 @@
 		</div>
 		<img ng-src="{{hotel.img}}" class="col-md-3 col-xs-12" >
 		<div class="col-md-6">
-			<div class="row h3">{{hotel.name | uppercase}}</div>
+			<div class="row h3">
+
+			{{hotel.name | uppercase}}
+			<small><span class="glyphicon glyphicon-star text-success" ng-repeat="item in hotel.rating | numberToArray track by $index"></span></small>
+			</div>
 			<div class="row text-muted hidden-xs hidden-sm">
 			<span ng-hide="hotel.more">{{hotel.description | limitTo : 200}}</span>
 			<span ng-show="hotel.more">{{hotel.description}}</span>

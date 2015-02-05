@@ -3,3 +3,10 @@ var app = angular.module('wfis', ['greeting']); //empty braces denote no depende
 
 
 
+app.filter('numberToArray', function(){
+	//return a function that can be applied for each value
+	//input will be the value on which the filter has been applied
+	return function(input){
+		return new Array(input);
+	}
+})
