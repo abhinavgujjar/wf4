@@ -1,14 +1,11 @@
 
-app.factory('votingService', function() {
+app.factory('votingService', function(uiConfig) {
 
-	function innerCalc(){
-		
-	}
 
 	//return the service
 	return {
 		up: function(hotel) {
-			hotel.rating++;
+			hotel.rating += uiConfig.increment;
 		},
 		down: function(hotel) {
 			hotel.rating = hotel.rating || 0;

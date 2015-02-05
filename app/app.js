@@ -6,7 +6,8 @@ var app = angular.module('wfis', ['greeting']); //empty braces denote no depende
 app.value('uiConfig', {
 	textLimit: 200,
 	numberOfItems: 5,
-	expensive: 10000
+	expensive: 10000,
+	increment : 3
 });
 
 
