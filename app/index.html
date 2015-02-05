@@ -30,14 +30,30 @@
 
 	</div>
 	<hr/>
-	<div ng-repeat="hotel in hotels" class="well well-sm row">
+	<div class="row" >
+		<div class="col-md-2">
+			<input type="text" class="form-control" ng-model="searchTerm" placeholder="Enter search term"/>
+		</div>
+		<div class="col-md-2">
+			<input type="text" class="form-control"  ng-model="orderByTerm" placeholder="order by ?" />
+		</div>
+		
+
+	</div>
+	<hr/>
+	<div ng-repeat="hotel in hotels | filter : searchTerm | orderBy : orderByTerm" class="well well-sm row">
+		<div class="col-md-1">
+			<div class="text-center"><button class="btn btn-success " ng-click="up(hotel)"><span class="glyphicon glyphicon-chevron-up"></span></button></div>
+			<div class="text-center"><h2>{{hotel.rating}}</h2></div>
+			<div class="text-center"><button class="btn btn-danger" ng-click="down(hotel)"><span class="glyphicon glyphicon-chevron-down"></span></button></div>
+		</div>
 		<img ng-src="{{hotel.img}}" class="col-md-3 col-xs-12" >
-		<div class="col-md-7">
-			<div class="row h3">{{hotel.name}}</div>
+		<div class="col-md-6">
+			<div class="row h3">{{hotel.name | uppercase}}</div>
 			<div class="row text-muted hidden-xs hidden-sm">{{hotel.description}}</div>
 		</div>
 		<div class="col-md-2 h2 text-center">
-			{{hotel.price}}
+			{{hotel.price | currency : 'Rs.'}}
 		</div>
 	</div>
 

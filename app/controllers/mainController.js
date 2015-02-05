@@ -1,6 +1,12 @@
 	//defined the controller
 function mainController($scope) {
 
+	$scope.up = function(hotel){
+		hotel.rating ++;
+	}
+$scope.down = function(hotel){
+		hotel.rating --;
+	}
 
 	$scope.hotels = [{
 		"name": "Golden Palms Hotel & Spa",
