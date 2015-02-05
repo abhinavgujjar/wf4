@@ -1,17 +1,25 @@
+angular.module('voting', []).provider('votingService',
 
-app.factory('votingService', function(uiConfig) {
-
+ function() {
 
 	//return the service
-	return {
-		up: function(hotel) {
-			hotel.rating += uiConfig.increment;
-		},
-		down: function(hotel) {
-			hotel.rating = hotel.rating || 0;
+	var _increment = 1;
 
-			if (hotel.rating > 0) {
-				hotel.rating--;
+	this.setIncrement = function(value){
+		_increment = value;
+	}
+
+	this.$get =  function() {
+		return {
+			up: function(hotel) {
+				hotel.rating += _increment;
+			},
+			down: function(hotel) {
+				hotel.rating = hotel.rating || 0;
+
+				if (hotel.rating > 0) {
+					hotel.rating--;
+				}
 			}
 		}
 	}

@@ -1,10 +1,13 @@
 	//defined the controller
-	function mainController($scope, uiConfig, votingService, favsService) {
-
+	function mainController($scope, uiConfig, votingService, favsService, $interval, forex) {
 
 		$scope.addToFavs = function(hotel) {
 			favsService.addToFavs(hotel);
 		}
+
+		$interval(function(){
+			$scope.rate = forex.getRate();
+		},1000)
 
 		$scope.expensive = uiConfig.expensive;
 		$scope.textLimit = uiConfig.textLimit;

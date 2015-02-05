@@ -36,9 +36,11 @@ Questions
 -----------------
 * Can you have multiple controllers on the same element? 
     
-    > Ans : No. more details to follow
+    > Ans : No.
     
 * How do you access the child scope from parent scope
 	
     > Ans: you don't. more on this later...
 
+* How to remove the # form the URL
+	> Ans : HTML 5 style routes.

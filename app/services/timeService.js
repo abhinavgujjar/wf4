@@ -1,7 +1,6 @@
 
 app.factory('timeService', function() {
 
-
 	var service = {
 		getTimeOfDay: function() {
 			var timeOfDay = 'Morning';

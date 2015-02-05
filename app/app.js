@@ -1,5 +1,33 @@
 //register and declare a module
-var app = angular.module('wfis', ['greeting']); //empty braces denote no dependencies on other modules!
+var app = angular.module('wfis', ['greeting', 'voting', 'ngRoute']); //empty braces denote no dependencies on other modules!
+
+
+app.config(function(votingServiceProvider, $routeProvider){
+	votingServiceProvider.setIncrement(6);
+
+	$routeProvider.when('/home', {
+		templateUrl : 'partials/home.html'
+	});
+
+	$routeProvider.when('/listing', {
+		templateUrl : 'partials/listing.html'
+	});
+
+
+
+})	
+
+app.factory('forex' , function(){
+	return {
+		getRate : function(){
+			var random = Math.floor((Math.random() * 10) + 1);
+
+			var rate = 50 + random;
+
+			return rate;
+		}
+	}
+})
 
 
 //value service
@@ -8,31 +36,4 @@ app.value('uiConfig', {
 	numberOfItems: 5,
 	expensive: 10000,
 	increment : 3
-});
-
-
-app.filter('numberToArray', function() {
-	//return a function that can be applied for each value
-	//input will be the value on which the filter has been applied
-	return function(input) {
-		return new Array(input);
-	}
-});
-
-app.filter('paginate', function() {
-	return function(input, numberOfItems, pageNumber) {
-		//should select the correct page and give back 
-		var output = input.slice((pageNumber - 1) * numberOfItems, (pageNumber * numberOfItems));
-
-		return output;
-	}
-})
-
-
-app.filter('traditionalize', function() {
-	//return a function that can be applied for each value
-	//input will be the value on which the filter has been applied
-	return function(input) {
-		return input ? input.replace('Bangalore', 'Bengaluru') : input;
-	}
 });
