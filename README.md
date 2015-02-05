@@ -20,6 +20,9 @@ bower install angular
 Bootstrap
 ------------------
 
+**Grid Layout**
+> 12 columns can be infinitely sub-divided
+
 * xs : mobile phones and tablets in potrait
 * sm : tablets in landscape
 * md : Regular screens
@@ -32,7 +35,7 @@ Questions
 * Can you have multiple controllers on the same element? 
     
     > Ans : No. more details to follow
-	
+    
 * How do you access the child scope from parent scope
 	
     > Ans: you don't. more on this later...
