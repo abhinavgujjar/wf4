@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"></head>
 
-<body  class="container">
+<body  class="container" ng-controller="headerController">
 	<style type="text/css">
 	.highlight {
 		color: red;
@@ -14,7 +14,7 @@
 </style>
 	<div ng-controller="greetingController">
 		<h1>
-			{{greeting}}  | {{companyName}} | {{secondsForWorldCup | number : 0}}
+			{{greeting}}  | {{companyName}} | {{secondsForWorldCup | number : 0}} | <span class="label label-success">{{action}}</span>
 		</h1>
 	</div>
 
@@ -40,6 +40,7 @@
 	<script type="text/javascript" src="controllers/mainController.js"></script>
 	<script type="text/javascript" src="controllers/greetingController.js"></script>
 	<script type="text/javascript" src="controllers/favsController.js"></script>
+	<script type="text/javascript" src="controllers/headerController.js"></script>
 	<script type="text/javascript" src="controllers/navController.js"></script>
 	<script type="text/javascript" src="services/timeService.js"></script>
 	<script type="text/javascript" src="services/votingService.js"></script>

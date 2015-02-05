@@ -4,7 +4,9 @@ angular.module('wfis').controller('addController', function($scope) {
 		$scope.hotels.push({
 			name: newhotel.name,
 			price: newhotel.price
-		})
+		});
+
+		$scope.$emit('hotelAdded', newhotel);
 	}
 
 
