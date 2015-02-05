@@ -1,11 +1,17 @@
 	//defined the controller
 function mainController($scope) {
 
+	$scope.numberItems = 5;
+
 	$scope.up = function(hotel){
 		hotel.rating ++;
 	}
 $scope.down = function(hotel){
 		hotel.rating --;
+	}
+
+	$scope.toggleMore = function(hotel){
+		hotel.more = !hotel.more;
 	}
 
 	$scope.hotels = [{

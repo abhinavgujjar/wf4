@@ -55,7 +55,12 @@
 		<img ng-src="{{hotel.img}}" class="col-md-3 col-xs-12" >
 		<div class="col-md-6">
 			<div class="row h3">{{hotel.name | uppercase}}</div>
-			<div class="row text-muted hidden-xs hidden-sm">{{hotel.description}}</div>
+			<div class="row text-muted hidden-xs hidden-sm">
+			<span ng-hide="hotel.more">{{hotel.description | limitTo : 200}}</span>
+			<span ng-show="hotel.more">{{hotel.description}}</span>
+			<span ng-show="hotel.description.length > 200 && !hotel.more"><a href="" ng-click="toggleMore(hotel)">...more</a></span>
+			<span ng-show="hotel.more"><a href="" ng-click="toggleMore(hotel)">less</a></span>
+			</div>
 		</div>
 		<div class="col-md-2 h2 text-center">
 			{{hotel.price | currency : 'Rs.'}}
