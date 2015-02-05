@@ -4,23 +4,52 @@ var app = angular.module('wfis', ['greeting']); //empty braces denote no depende
 
 //value service
 app.value('uiConfig', {
-	textLimit : 200,
-	numberOfItems : 5,
-	expensive : 10000
+	textLimit: 200,
+	numberOfItems: 5,
+	expensive: 10000
 });
 
-app.factory('votingService', function(){
+app.factory('timeService', function() {
+
+
+	var service = {
+		getTimeOfDay: function() {
+			var timeOfDay = 'Morning';
+			var hours = (new Date()).getHours();
+			if (hours > 11) {
+				timeOfDay = 'Afternoon'
+			}
+			if (hours > 16) {
+				timeOfDay = 'Evening'
+			}
+
+			if (hours > 20) {
+				timeOfDay = 'Night'
+			}
+
+			return timeOfDay;
+		}
+	};
+
+	return service;
+})
+
+app.factory('votingService', function() {
+
+	function innerCalc(){
+		
+	}
 
 	//return the service
 	return {
-		up : function(hotel){
-			hotel.rating ++;
+		up: function(hotel) {
+			hotel.rating++;
 		},
-		down : function(hotel){
+		down: function(hotel) {
 			hotel.rating = hotel.rating || 0;
 
-			if (hotel.rating > 0 ){
-				hotel.rating --;
+			if (hotel.rating > 0) {
+				hotel.rating--;
 			}
 		}
 	}
@@ -28,28 +57,28 @@ app.factory('votingService', function(){
 })
 
 
-app.filter('numberToArray', function(){
+app.filter('numberToArray', function() {
 	//return a function that can be applied for each value
 	//input will be the value on which the filter has been applied
-	return function(input){
+	return function(input) {
 		return new Array(input);
 	}
 });
 
-app.filter('paginate', function(){
-	return function(input, numberOfItems, pageNumber){
+app.filter('paginate', function() {
+	return function(input, numberOfItems, pageNumber) {
 		//should select the correct page and give back 
-		var output = input.slice((pageNumber -1 ) * numberOfItems, (pageNumber*numberOfItems));
+		var output = input.slice((pageNumber - 1) * numberOfItems, (pageNumber * numberOfItems));
 
 		return output;
 	}
 })
 
 
-app.filter('traditionalize', function(){
+app.filter('traditionalize', function() {
 	//return a function that can be applied for each value
 	//input will be the value on which the filter has been applied
-	return function(input){
+	return function(input) {
 		return input.replace('Bangalore', 'Bengaluru');
 	}
 });

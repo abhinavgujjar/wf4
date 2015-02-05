@@ -15,7 +15,9 @@ bower install angular
 
 **ng-inspector** - chrome extension for angular debugging. 
 
-
+Plunks
+-----------------
+* [Revealing Module Pattern](http://plnkr.co/edit/BMvCJ4eXE1nDVBFb91YY?p=preview)
     
 Bootstrap
 ------------------
