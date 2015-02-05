@@ -9,53 +9,6 @@ app.value('uiConfig', {
 	expensive: 10000
 });
 
-app.factory('timeService', function() {
-
-
-	var service = {
-		getTimeOfDay: function() {
-			var timeOfDay = 'Morning';
-			var hours = (new Date()).getHours();
-			if (hours > 11) {
-				timeOfDay = 'Afternoon'
-			}
-			if (hours > 16) {
-				timeOfDay = 'Evening'
-			}
-
-			if (hours > 20) {
-				timeOfDay = 'Night'
-			}
-
-			return timeOfDay;
-		}
-	};
-
-	return service;
-})
-
-app.factory('votingService', function() {
-
-	function innerCalc(){
-		
-	}
-
-	//return the service
-	return {
-		up: function(hotel) {
-			hotel.rating++;
-		},
-		down: function(hotel) {
-			hotel.rating = hotel.rating || 0;
-
-			if (hotel.rating > 0) {
-				hotel.rating--;
-			}
-		}
-	}
-
-})
-
 
 app.filter('numberToArray', function() {
 	//return a function that can be applied for each value
@@ -79,6 +32,6 @@ app.filter('traditionalize', function() {
 	//return a function that can be applied for each value
 	//input will be the value on which the filter has been applied
 	return function(input) {
-		return input.replace('Bangalore', 'Bengaluru');
+		return input ? input.replace('Bangalore', 'Bengaluru') : input;
 	}
 });
