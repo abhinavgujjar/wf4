@@ -50,6 +50,7 @@
 		});
 
 	}
+	mainController.$inject = ["$scope", "uiConfig", "votingService", "favsService", "$interval", "forex", "$http"];
 
 	//register the controller
 	app.controller('mainController', mainController);

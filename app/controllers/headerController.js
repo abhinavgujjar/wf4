@@ -1,4 +1,4 @@
-app.controller('headerController', function($scope, $timeout){
+app.controller('headerController', ["$scope", "$timeout", function($scope, $timeout){
 	$scope.$on('hotelAdded', function(event, arg){
 		$scope.action = 'new hotel added!';
 
@@ -6,4 +6,4 @@ app.controller('headerController', function($scope, $timeout){
 			$scope.action = '';			
 		}, 5000);
 	})
-})
+}])

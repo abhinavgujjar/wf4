@@ -15,6 +15,14 @@ bower install angular
 
 **ng-inspector** - chrome extension for angular debugging. 
 
+**ng-annotate** - tool for min safing your angular javascript files. can be installed using
+
+```bash
+npm install ng-annotate
+```
+requires nodejs
+
+
 Plunks
 -----------------
 * [Revealing Module Pattern](http://plnkr.co/edit/BMvCJ4eXE1nDVBFb91YY?p=preview)
