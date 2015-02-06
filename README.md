@@ -22,6 +22,7 @@ npm install ng-annotate
 ```
 requires nodejs
 
+**Angular UI modules** UI helper modules built for angular can be found [here](https://angular-ui.github.io/)
 
 Plunks
 -----------------
