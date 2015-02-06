@@ -21,7 +21,7 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label">Price</label>
-					<input type="number" name="vPrice" class="form-control" min="1000" max="200000" ng-model="newHotel.price"   placeholder="Price" />
+					<input type="number" name="vPrice" only-even class="form-control" min="1000" max="200000" ng-model="newHotel.price"   placeholder="Price" />
 					<div ng-show="basics.vPrice.$invalid" class="text-danger">{{hotelsForm.vPrice.$viewValue}} is not valid</div>
 				</div>
 				<div class="form-group">
