@@ -1,11 +1,9 @@
 <div >
-	<div class="panel panel-warning">
-		<div class="panel-heading">Favorites</div>
-		<div class="panel-body">
-			<ul>
-				<li ng-repeat="item in favs">{{item.name}}</li>
-			</ul>
-		</div>
-	</div>
+	<panel heading="Favorites" modifier="primary">
+		<ul>
+			<li ng-repeat="item in favs">{{item.name}}</li>
+		</ul>
+
+	</panel>
 
 </div>

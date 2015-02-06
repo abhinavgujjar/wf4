@@ -20,7 +20,7 @@ angular.module('wfis').controller('addController', function($scope, $http, messa
 		"http://i.imgur.com/QezaFg8.jpg"
 	];
 
-	
+
 
 	$scope.newHotel = {
 
@@ -35,20 +35,17 @@ angular.module('wfis').controller('addController', function($scope, $http, messa
 	}
 	$scope.addHotel = function(newhotel) {
 
-		if ($scope.hotelsForm.$valid) {
-
-			$http.post('https://api.parse.com/1/classes/hotels', newhotel, {
-				headers: {
-					'X-Parse-Application-Id': '4Ed5phWiVdXfuQx9gbtQddrEVKyq9svszfMHFFAS',
-					'X-Parse-REST-API-Key': 'wC5vH6e6WXnt5WpaNfO5w2FZCPnQYWDnQFHqGwtd'
-				}
-			});
 
 
-			$scope.$emit('hotelAdded', newhotel);
-		} else {
-			alert('not valid');
-		}
+		$http.post('https://api.parse.com/1/classes/hotels', newhotel, {
+			headers: {
+				'X-Parse-Application-Id': '4Ed5phWiVdXfuQx9gbtQddrEVKyq9svszfMHFFAS',
+				'X-Parse-REST-API-Key': 'wC5vH6e6WXnt5WpaNfO5w2FZCPnQYWDnQFHqGwtd'
+			}
+		});
+
+
+		$scope.$emit('hotelAdded', newhotel);
 	}
 
 

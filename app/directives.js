@@ -41,6 +41,35 @@ app.directive('favs', function() {
 	}
 })
 
+app.directive('panel', function() {
+	return {
+		restrict: 'E',
+		transclude : true,
+		templateUrl: 'partials/panel.html',
+		scope :{
+			heading  :'@',
+			modifier :  '@'
+		}
+	}
+});
+
+app.directive('zoom', function(){
+	return{
+		restrict : 'A',
+		link : function(scope, element, attr, ctrl){
+
+			
+			element.on('mouseenter', function(){
+
+				element.css({
+					'font-size' : '42px'
+				});
+
+			})
+		}
+	}
+})
+
 app.directive('carousel', function() {
 	return {
 		restrict: 'E',
