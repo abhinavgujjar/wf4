@@ -7,7 +7,7 @@ angular.module('wfis').controller('addController', function($scope, $http, messa
 
 	}
 
-	var images = [
+	$scope.images = [
 		"http://i.imgur.com/dmlhhkU.jpg",
 		"http://i.imgur.com/S54M0bj.jpg",
 		"http://i.imgur.com/hZg00lq.jpg",
@@ -19,6 +19,8 @@ angular.module('wfis').controller('addController', function($scope, $http, messa
 		"http://i.imgur.com/BIBuk43.jpg",
 		"http://i.imgur.com/QezaFg8.jpg"
 	];
+
+	
 
 	$scope.newHotel = {
 

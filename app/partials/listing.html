@@ -56,81 +56,18 @@
 		</div>
 		<div>
 			<div ng-repeat="hotel in hotels | filter : searchTerm | orderBy : orderByTerm | paginate : numberItems : pageNumber" class="well well-sm row">
-				<div class="col-md-1">
-					<div class="text-center">
-						<button class="btn btn-success " ng-click="up(hotel)">
-							<span class="glyphicon glyphicon-chevron-up"></span>
-						</button>
-					</div>
-					<div class="text-center">
-						<h2>{{hotel.rating}}</h2>
-					</div>
-					<div class="text-center">
-						<button class="btn btn-danger" ng-click="down(hotel)">
-							<span class="glyphicon glyphicon-chevron-down"></span>
-						</button>
-					</div>
-					<div>
-						<button class="btn btn-default" ng-click="addToFavs(hotel)">
-							<span class="glyphicon glyphicon-star"></span>
-						</button>
-					</div>
-				</div>
-				<img ng-src="{{hotel.img}}" class="col-md-3 col-xs-12" >
-				<div class="col-md-6">
-					<div class="row h3" ng-class="{'highlight' : hotel.price >
-						expensive}">
-
-			{{hotel.name | uppercase}}
-						<small>
-							<span class="glyphicon glyphicon-star text-success" ng-repeat="item in hotel.rating | numberToArray track by $index"></span>
-						</small>
-					</div>
-					<div class="row text-muted hidden-xs hidden-sm">
-						<span ng-hide="hotel.more">{{hotel.description | limitTo : textLimit | traditionalize}}</span>
-						<span ng-show="hotel.more">{{hotel.description | traditionalize}}</span>
-						<span ng-show="hotel.description.length >
-							textLimit && !hotel.more">
-							<a href="" ng-click="toggleMore(hotel)">...more</a>
-						</span>
-						<span ng-show="hotel.more">
-							<a href="" ng-click="toggleMore(hotel)">less</a>
-						</span>
-					</div>
-				</div>
-				<div class="col-md-2 h4 text-center">{{hotel.price * rate | number}}</div>
+				<ng-include src="'partials/hotelItem.html'"></ng-include>
 			</div>
 		</div>
 
 	</div>
 	<div class="col-md-3" >
 
-		<div ng-controller="addController">
-			<div class="panel panel-primary">
-				<div class="panel-heading">Quick Add</div>
-				<div class="panel-body">
-					<form>
-						<div class="form-group">
-							<label >Name</label>
-							<input type="text" class="form-control" placeholder="Enter name"  ng-model="newHotel.name"></div>
-						<div class="form-group">
-							<label >Price</label>
-							<input type="number" class="form-control" placeholder="Enter name"  ng-model="newHotel.price"></div>
-						<button  class="btn btn-default" ng-click="addHotel(newHotel)">Add</button>
-					</form>
-				</div>
-			</div>
-
+		<div>
+			<quick-add></quick-add>
 		</div>
-		<div ng-controller="favsController">
-			<div class="panel panel-warning">
-				<div class="panel-heading">Quick Add</div>
-				<div class="panel-body">
-					<ul>
-						<li ng-repeat="item in favs">{{item.name}}</li>
-					</ul>
-				</div>
-			</div>
+		<div>
+			<favs></favs>
 
 		</div>
 	</div>
