@@ -19,7 +19,7 @@ Plunks
 -----------------
 * [Revealing Module Pattern](http://plnkr.co/edit/BMvCJ4eXE1nDVBFb91YY?p=preview)
 
-* [Template Expanding directive](http://plnkr.co/edit/tpl:rfqcl9AHEoJZEEJxyNn2?p=preview)
+* [Template Expanding directive](http://plnkr.co/edit/8bdVxK?p=preview)
     
 Bootstrap
 ------------------
