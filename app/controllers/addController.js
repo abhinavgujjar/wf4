@@ -1,16 +1,30 @@
 angular.module('wfis').controller('addController', function($scope, $http, messages) {
 
 	$scope.messages = messages;
-	$scope.saveHotel = function(newhotel){
+	$scope.saveHotel = function(newhotel) {
 		//save it. don't care about the validation
 
 
 	}
+
+	var images = [
+		"http://i.imgur.com/dmlhhkU.jpg",
+		"http://i.imgur.com/S54M0bj.jpg",
+		"http://i.imgur.com/hZg00lq.jpg",
+		"http://i.imgur.com/1jD7lgN.jpg",
+		"http://i.imgur.com/U0KoJxh.jpg",
+		"http://i.imgur.com/amBtxWl.jpg",
+		"http://i.imgur.com/QhVORNH.jpg",
+		"http://i.imgur.com/QhVORNH.jpg",
+		"http://i.imgur.com/BIBuk43.jpg",
+		"http://i.imgur.com/QezaFg8.jpg"
+	];
+
 	$scope.newHotel = {
 
 	}
 
-	$scope.addAmenity = function(amenity){
+	$scope.addAmenity = function(amenity) {
 
 		$scope.newHotel.amenities = $scope.newHotel.amenities || [];
 

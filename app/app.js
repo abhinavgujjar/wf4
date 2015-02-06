@@ -1,5 +1,5 @@
 //register and declare a module
-var app = angular.module('wfis', ['greeting', 'voting', 'ngRoute']); //empty braces denote no dependencies on other modules!
+var app = angular.module('wfis', ['greeting', 'voting', 'ngRoute', 'ngSanitize']); //empty braces denote no dependencies on other modules!
 
 
 app.config(function(votingServiceProvider, $routeProvider){
@@ -39,6 +39,8 @@ app.factory('forex' , function(){
 		}
 	}
 })
+
+
 
 
 //value service
