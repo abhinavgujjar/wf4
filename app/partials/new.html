@@ -1,3 +1,56 @@
-<div >
-	<h1>NEW</h1>
+<div>
+	<style type="text/css">
+	input.ng-invalid.ng-dirty {
+		background-color: pink;
+	}
+
+	input.ng-invalid.ng-pristine {
+		border-color: pink;
+		border-width: 2px;
+	}
+
+	</style>
+	<div class="col-md-7">
+		<ng-form class="form" name="hotelsForm">
+
+			<ng-form name="basics">
+				<div class="form-group">
+					<label class="control-label">Name</label>
+					<input type="text" class="form-control" minlength="5" name="vName" maxlength="20" required ng-model="newHotel.name" placeholder="Name" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" />
+					<div ng-show="basics.vName.$invalid" class="text-danger">{{basics.vName.$viewValue}} {{messages.name}}</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">Price</label>
+					<input type="number" name="vPrice" class="form-control" min="1000" max="200000" ng-model="newHotel.price"   placeholder="Price" />
+					<div ng-show="basics.vPrice.$invalid" class="text-danger">{{hotelsForm.vPrice.$viewValue}} is not valid</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">Mobile Number</label>
+					<input type="number" ng-pattern="/^[789]\d{9}$/" class="form-control" ng-model="newHotel.mobile" name="vMobile"   placeholder="10 digit Mobile number" />
+					<div ng-show="basics.vMobile.$invalid" class="text-danger">{{messages.mobile}}</div>
+				</div>
+			</ng-form>
+			<ng-form name="extras">
+				<div class="form-group">
+					<label class="control-label">Location</label>
+					<input type="text" class="form-control" required ng-model="newHotel.location"   placeholder="Location" />
+				</div>
+				<div class="form-group">
+					<label class="control-label">Description</label>
+					<textarea class="form-control" ng-model="newHotel.description" ></textarea>
+				</div>
+			</ng-form>
+			<br/>
+			<div class="form-group ">
+				<div >
+					<button ng-disabled="hotelsForm.$invalid" ng-click="addHotel(newHotel)" class="btn btn-primary">Add New Hotel</button>
+					<button ng-disabled="basics.$invalid" class="btn btn-primary">Basics</button>
+					<button  ng-disabled="extras.$invalid" class="btn btn-primary">Extras</button>
+				</div>
+			</div>
+		</ng-form>
+	</div>
+
+</div>
+<div class="col-md-4">{{newHotel}}</div>
 </div>
