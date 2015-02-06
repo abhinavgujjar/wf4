@@ -50,7 +50,14 @@
 			</div>
 		</ng-form>
 	</div>
+	<div class="col-md-4">
+		<ng-form name="amenitiesForm">
+			<ul >
+				<li ng-repeat="amenity in newHotel.amenities">{{amenity.name}}</li>
+			</ul>
+			<input type="text" class="form-control" required ng-model="amenity.name" />
+			<button ng-click="addAmenity(amenity)" class="btn btn-default" ng-disabled="amenitiesForm.$invalid">add</button>
+		</ng-form>
 
-</div>
-<div class="col-md-4">{{newHotel}}</div>
+	</div>
 </div>

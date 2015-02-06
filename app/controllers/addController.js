@@ -6,6 +6,17 @@ angular.module('wfis').controller('addController', function($scope, $http, messa
 
 
 	}
+	$scope.newHotel = {
+
+	}
+
+	$scope.addAmenity = function(amenity){
+
+		$scope.newHotel.amenities = $scope.newHotel.amenities || [];
+
+		$scope.newHotel.amenities.push(angular.copy(amenity));
+
+	}
 	$scope.addHotel = function(newhotel) {
 
 		if ($scope.hotelsForm.$valid) {
