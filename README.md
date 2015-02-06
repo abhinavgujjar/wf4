@@ -28,6 +28,8 @@ Plunks
 * [Revealing Module Pattern](http://plnkr.co/edit/BMvCJ4eXE1nDVBFb91YY?p=preview)
 
 * [Template Expanding directive](http://plnkr.co/edit/lEsQJi?p=preview)
+
+* [Tranclusion Directive](http://plnkr.co/edit/f0RiV1?p=preview)
     
 Bootstrap
 ------------------
